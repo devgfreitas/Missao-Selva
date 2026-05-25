@@ -4,14 +4,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
     $rm = $_POST['rm'];
 
-    // RECURSOS INICIAIS
     $agua = $rm * 0.15;
 
     $energia = $rm / 2;
 
     $combustivel = ($energia * 0.10) + ($agua * 0.40);
 
-    // DADOS DA FASE
     $fase = [
         "nome" => "Montanha",
         "distancia" => 42,
@@ -19,7 +17,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         "dificuldade" => 4
     ];
 
-    // CONSUMOS
     $consumoEnergia =
         $fase['distancia'] *
         $fase['dificuldade'] *
@@ -31,7 +28,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $consumoCombustivel =
         ($fase['altitude'] / 100) * 12;
 
-    // RECURSOS FINAIS
     $energiaFinal =
         $energia - $consumoEnergia;
 
@@ -41,7 +37,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $combustivelFinal =
         $combustivel - $consumoCombustivel;
 
-    // PENALIDADES E ALERTAS
     $penalidade = 0;
 
     if($energiaFinal < ($energia * 0.30)){
